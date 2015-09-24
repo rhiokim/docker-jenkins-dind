@@ -24,6 +24,7 @@ RUN chmod +x /usr/local/bin/wrapdocker
 VOLUME /var/lib/docker
 
 ENV DOCKER_COMPOSE_VERSION 1.3.3
+ENV DOCKER_DAEMON_ARGS --insecure-registry 192.168.1.39:5000
 
 RUN wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | apt-key add -
 RUN sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
@@ -40,4 +41,4 @@ ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 8080
 
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord", "&"]
