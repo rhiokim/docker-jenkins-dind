@@ -1,0 +1,4 @@
+credentials:latest
+embeddable-build-status:latest
+git:latest
+gitlab-hook:latest
